@@ -22,13 +22,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.samples.apps.sunflower.adapters.MY_GARDEN_PAGE_INDEX
 import com.google.samples.apps.sunflower.adapters.PLANT_LIST_PAGE_INDEX
 import com.google.samples.apps.sunflower.adapters.SunflowerPagerAdapter
 import com.google.samples.apps.sunflower.databinding.FragmentViewPagerBinding
+import com.google.samples.apps.sunflower.viewmodels.HomeViewPagerViewModel
 
 class HomeViewPagerFragment : Fragment() {
+    private val viewModel: HomeViewPagerViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +43,9 @@ class HomeViewPagerFragment : Fragment() {
         val viewPager = binding.viewPager
 
         viewPager.adapter = SunflowerPagerAdapter(this)
+        viewModel.currentItemIndex.observe(viewLifecycleOwner) {
+            viewPager.currentItem = it
+        }
 
         // Set the icon and text for each tab
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->

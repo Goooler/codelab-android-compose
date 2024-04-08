@@ -21,13 +21,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.viewpager2.widget.ViewPager2
 import com.google.samples.apps.sunflower.adapters.GardenPlantingAdapter
 import com.google.samples.apps.sunflower.adapters.PLANT_LIST_PAGE_INDEX
 import com.google.samples.apps.sunflower.databinding.FragmentGardenBinding
 import com.google.samples.apps.sunflower.utilities.InjectorUtils
 import com.google.samples.apps.sunflower.viewmodels.GardenPlantingListViewModel
+import com.google.samples.apps.sunflower.viewmodels.HomeViewPagerViewModel
 
 class GardenFragment : Fragment() {
 
@@ -36,6 +37,7 @@ class GardenFragment : Fragment() {
     private val viewModel: GardenPlantingListViewModel by viewModels {
         InjectorUtils.provideGardenPlantingListViewModelFactory(requireContext())
     }
+    private val homeViewPagerViewModel: HomeViewPagerViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,9 +63,7 @@ class GardenFragment : Fragment() {
         }
     }
 
-    // TODO: convert to data binding if applicable
     private fun navigateToPlantListPage() {
-        requireActivity().findViewById<ViewPager2>(R.id.view_pager).currentItem =
-            PLANT_LIST_PAGE_INDEX
+        homeViewPagerViewModel.setCurrentItemIndex(PLANT_LIST_PAGE_INDEX)
     }
 }
