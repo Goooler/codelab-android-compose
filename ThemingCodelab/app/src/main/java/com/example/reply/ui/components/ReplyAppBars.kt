@@ -47,7 +47,7 @@ fun ReplySearchBar(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
             imageVector = Icons.Default.Search,
@@ -66,7 +66,7 @@ fun ReplySearchBar(modifier: Modifier = Modifier) {
             description = stringResource(id = R.string.profile),
             modifier = Modifier
                 .padding(12.dp)
-                .size(32.dp)
+                .size(32.dp),
         )
     }
 }
@@ -77,26 +77,29 @@ fun EmailDetailAppBar(
     email: Email,
     isFullScreen: Boolean,
     modifier: Modifier = Modifier,
-    onBackPressed: () -> Unit
+    onBackPressed: () -> Unit,
 ) {
     TopAppBar(
         modifier = modifier,
         title = {
             Column(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = if (isFullScreen) Alignment.CenterHorizontally
-                else Alignment.Start
+                horizontalAlignment = if (isFullScreen) {
+                    Alignment.CenterHorizontally
+                } else {
+                    Alignment.Start
+                },
             ) {
                 Text(
                     text = email.subject,
                     style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
                 Text(
                     modifier = Modifier.padding(top = 4.dp),
                     text = "${email.threads.size} ${stringResource(id = R.string.messages)}",
                     style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.outline
+                    color = MaterialTheme.colorScheme.outline,
                 )
             }
         },
@@ -107,13 +110,13 @@ fun EmailDetailAppBar(
                     modifier = Modifier.padding(8.dp),
                     colors = IconButtonDefaults.filledIconButtonColors(
                         containerColor = MaterialTheme.colorScheme.surface,
-                        contentColor = MaterialTheme.colorScheme.onSurface
-                    )
+                        contentColor = MaterialTheme.colorScheme.onSurface,
+                    ),
                 ) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = stringResource(id = R.string.back_button),
-                        modifier = Modifier.size(14.dp)
+                        modifier = Modifier.size(14.dp),
                     )
                 }
             }
@@ -125,9 +128,9 @@ fun EmailDetailAppBar(
                 Icon(
                     imageVector = Icons.Default.MoreVert,
                     contentDescription = stringResource(id = R.string.more_options_button),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
-        }
+        },
     )
 }

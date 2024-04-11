@@ -32,14 +32,18 @@ data class Email(
     var isStarred: Boolean = false,
     var mailbox: MailboxType = MailboxType.INBOX,
     val createdAt: String,
-    val threads: List<Email> = emptyList()
+    val threads: List<Email> = emptyList(),
 )
 
 enum class MailboxType {
-    INBOX, DRAFTS, SENT, SPAM, TRASH
+    INBOX,
+    DRAFTS,
+    SENT,
+    SPAM,
+    TRASH,
 }
 
 data class EmailAttachment(
     @DrawableRes val resId: Int,
-    val contentDesc: String
+    val contentDesc: String,
 )

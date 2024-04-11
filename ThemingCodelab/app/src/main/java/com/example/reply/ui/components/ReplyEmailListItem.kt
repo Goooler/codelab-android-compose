@@ -26,7 +26,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -46,10 +45,10 @@ fun ReplyEmailListItem(
     email: Email,
     isSelected: Boolean = false,
     modifier: Modifier = Modifier,
-    navigateToDetail: (Long) -> Unit
+    navigateToDetail: (Long) -> Unit,
 ) {
     Card(
-        modifier =  modifier
+        modifier = modifier
             .padding(horizontal = 16.dp, vertical = 4.dp)
             .semantics { selected = isSelected }
             .clickable { navigateToDetail(email.id) },
@@ -57,7 +56,7 @@ fun ReplyEmailListItem(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(20.dp)
+                .padding(20.dp),
         ) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 ReplyProfileImage(
@@ -68,7 +67,7 @@ fun ReplyEmailListItem(
                     modifier = Modifier
                         .weight(1f)
                         .padding(horizontal = 12.dp, vertical = 4.dp),
-                    verticalArrangement = Arrangement.Center
+                    verticalArrangement = Arrangement.Center,
                 ) {
                     Text(
                         text = email.sender.firstName,
@@ -80,7 +79,7 @@ fun ReplyEmailListItem(
                 IconButton(
                     onClick = { /*Click Implementation*/ },
                     modifier = Modifier
-                        .clip(CircleShape)
+                        .clip(CircleShape),
 
                 ) {
                     Icon(
@@ -97,7 +96,7 @@ fun ReplyEmailListItem(
             Text(
                 text = email.body,
                 maxLines = 2,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
             )
         }
     }

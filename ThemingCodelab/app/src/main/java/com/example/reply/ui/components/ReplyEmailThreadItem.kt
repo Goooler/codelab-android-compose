@@ -26,7 +26,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -42,13 +41,13 @@ import com.example.reply.data.Email
 @Composable
 fun ReplyEmailThreadItem(
     email: Email,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .padding(20.dp)
+            .padding(20.dp),
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
             ReplyProfileImage(
@@ -59,7 +58,7 @@ fun ReplyEmailThreadItem(
                 modifier = Modifier
                     .weight(1f)
                     .padding(horizontal = 12.dp, vertical = 4.dp),
-                verticalArrangement = Arrangement.Center
+                verticalArrangement = Arrangement.Center,
             ) {
                 Text(
                     text = email.sender.firstName,
@@ -71,12 +70,12 @@ fun ReplyEmailThreadItem(
             IconButton(
                 onClick = { /*Click Implementation*/ },
                 modifier = Modifier
-                    .clip(CircleShape)
+                    .clip(CircleShape),
             ) {
                 Icon(
                     imageVector = if (email.isStarred) Icons.Default.Star else Icons.Default.StarBorder,
                     contentDescription = stringResource(id = R.string.description_favorite),
-                    tint = if (email.isStarred) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.outline
+                    tint = if (email.isStarred) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.outline,
                 )
             }
         }

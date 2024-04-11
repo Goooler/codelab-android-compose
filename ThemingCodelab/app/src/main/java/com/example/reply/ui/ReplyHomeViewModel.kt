@@ -17,13 +17,10 @@
 package com.example.reply.ui
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.reply.data.Email
 import com.example.reply.data.LocalEmailsDataProvider
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.launch
 
 class ReplyHomeViewModel : ViewModel() {
 
@@ -39,7 +36,7 @@ class ReplyHomeViewModel : ViewModel() {
         val emails = LocalEmailsDataProvider.allEmails
         _uiState.value = ReplyHomeUIState(
             emails = emails,
-            selectedEmail = emails.first()
+            selectedEmail = emails.first(),
         )
     }
 
@@ -50,7 +47,7 @@ class ReplyHomeViewModel : ViewModel() {
         val email = uiState.value.emails.find { it.id == emailId }
         _uiState.value = _uiState.value.copy(
             selectedEmail = email,
-            isDetailOnlyOpen = true
+            isDetailOnlyOpen = true,
         )
     }
 
@@ -58,7 +55,7 @@ class ReplyHomeViewModel : ViewModel() {
         _uiState.value = _uiState
             .value.copy(
                 isDetailOnlyOpen = false,
-                selectedEmail = _uiState.value.emails.first()
+                selectedEmail = _uiState.value.emails.first(),
             )
     }
 }
@@ -68,5 +65,5 @@ data class ReplyHomeUIState(
     val selectedEmail: Email? = null,
     val isDetailOnlyOpen: Boolean = false,
     val loading: Boolean = false,
-    val error: String? = null
+    val error: String? = null,
 )

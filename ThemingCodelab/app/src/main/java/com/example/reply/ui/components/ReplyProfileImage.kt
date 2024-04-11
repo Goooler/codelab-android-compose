@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 fun ReplyProfileImage(
     drawableResource: Int,
     description: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Image(
         modifier = modifier

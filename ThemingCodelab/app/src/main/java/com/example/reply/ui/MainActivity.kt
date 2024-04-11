@@ -28,7 +28,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.reply.data.LocalEmailsDataProvider
 
-
 class MainActivity : ComponentActivity() {
 
     private val viewModel: ReplyHomeViewModel by viewModels()
@@ -45,7 +44,7 @@ class MainActivity : ComponentActivity() {
                 },
                 navigateToDetail = { emailId ->
                     viewModel.setSelectedEmail(emailId)
-                }
+                },
             )
         }
     }
@@ -53,17 +52,17 @@ class MainActivity : ComponentActivity() {
 
 @Preview(
     uiMode = UI_MODE_NIGHT_YES,
-    name = "DefaultPreviewDark"
+    name = "DefaultPreviewDark",
 )
 @Preview(
     uiMode = UI_MODE_NIGHT_NO,
-    name = "DefaultPreviewLight"
+    name = "DefaultPreviewLight",
 )
 @Composable
 fun ReplyAppPreviewLight() {
     ReplyApp(
         replyHomeUIState = ReplyHomeUIState(
-            emails = LocalEmailsDataProvider.allEmails
-        )
+            emails = LocalEmailsDataProvider.allEmails,
+        ),
     )
 }

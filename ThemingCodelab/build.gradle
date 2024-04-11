@@ -39,11 +39,15 @@ subprojects {
     apply plugin: 'com.diffplug.spotless'
     spotless {
         kotlin {
-            target '**/*.kt'
-            targetExclude("$buildDir/**/*.kt")
-            targetExclude('bin/**/*.kt')
+            target 'src/**/*.kt'
 
-            ktlint("0.45.2")
+            // We use the default Ktlint version embedded in Spotless, it will update with Spotless updates.
+            ktlint().editorConfigOverride(
+                    [
+                            "ktlint_standard_value-argument-comment"           : "disabled",
+                            "ktlint_function_naming_ignore_when_annotated_with": "Composable",
+                    ]
+            )
             licenseHeaderFile rootProject.file('spotless/copyright.kt')
         }
     }
